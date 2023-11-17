@@ -1,4 +1,5 @@
 import { Formik, Field, ErrorMessage } from 'formik';
+import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import { FaRegIdCard } from 'react-icons/fa';
 import * as Yup from 'yup';
@@ -6,7 +7,6 @@ import { Button, StyledForm } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
-import { nanoid } from 'nanoid';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').required('Required'),
@@ -22,11 +22,11 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const handleSubmit = (name, number) => {
+  const handleSubmit = (values, { resetForm }) => {
     const newContact = {
       id: nanoid(),
-      name: name,
-      number: number,
+      name: values.name,
+      number: values.number,
     };
     const isContactDublicate = contacts.some(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
@@ -36,6 +36,7 @@ export const ContactForm = () => {
       return;
     }
     dispatch(addContact(newContact));
+    resetForm();
   };
   return (
     <div>
@@ -45,10 +46,7 @@ export const ContactForm = () => {
           number: '',
         }}
         validationSchema={contactSchema}
-        onSubmit={(values, actions) => {
-          handleSubmit(values.name, values.number);
-          actions.resetForm();
-        }}
+        onSubmit={handleSubmit}
       >
         <StyledForm>
           <label>Name </label>
