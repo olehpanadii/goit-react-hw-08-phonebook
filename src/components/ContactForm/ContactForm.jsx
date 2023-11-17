@@ -10,7 +10,7 @@ import { addContact } from 'redux/contacts/operations';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').required('Required'),
-  phone: Yup.string()
+  number: Yup.string()
     .matches(
       /^\d{3}-\d{2}-\d{2}$/,
       'Invalid phone number. Please enter a valid phone number in the format XXX-XX-XX.'
@@ -28,6 +28,7 @@ export const ContactForm = () => {
       name: values.name,
       number: values.number,
     };
+    console.log(newContact);
     const isContactDublicate = contacts.some(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
