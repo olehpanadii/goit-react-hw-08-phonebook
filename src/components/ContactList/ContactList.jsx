@@ -2,8 +2,8 @@ import { FaPhoneAlt, FaUserTimes } from 'react-icons/fa';
 import { ContactItem, ContactNumber, DeleteBtn } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectContacts, selectFilter } from 'components/redux/selectors';
-import { deleteContact } from 'components/redux/operations';
+import { selectContacts, selectFilter } from 'redux/contacts/selectors';
+import { deleteContact } from 'redux/contacts/operations';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
