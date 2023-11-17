@@ -1,5 +1,4 @@
 import { Formik, Field, ErrorMessage } from 'formik';
-import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import { FaRegIdCard } from 'react-icons/fa';
 import * as Yup from 'yup';
@@ -7,6 +6,7 @@ import { Button, StyledForm } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
+import { nanoid } from 'nanoid';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').required('Required'),
