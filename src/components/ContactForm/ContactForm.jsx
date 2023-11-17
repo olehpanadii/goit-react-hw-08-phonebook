@@ -28,7 +28,7 @@ export const ContactForm = () => {
       name: values.name,
       number: values.number,
     };
-    console.log(newContact);
+    console.log(values);
     const isContactDublicate = contacts.some(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );

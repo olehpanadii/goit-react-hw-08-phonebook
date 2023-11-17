@@ -16,12 +16,12 @@ export const ContactList = () => {
 
   return (
     <ul>
-      {visibleContacts.map(({ id, name, phone }) => (
+      {visibleContacts.map(({ id, name, number }) => (
         <ContactItem key={id}>
           <h3>{name}</h3>
           <ContactNumber>
             <p>
-              <FaPhoneAlt /> {phone}
+              <FaPhoneAlt /> {number}
             </p>
             <DeleteBtn onClick={() => dispatch(deleteContact(id))}>
               Delete <FaUserTimes />
