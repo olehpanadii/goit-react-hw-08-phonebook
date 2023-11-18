@@ -9,4 +9,5 @@ export const Title = styled.h1`
 export const TitleContainer = styled.div`
   max-width: 460px;
   margin: 0 auto;
+  padding: 0 15px;
 `;
