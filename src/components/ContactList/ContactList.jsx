@@ -1,5 +1,10 @@
 import { FaPhoneAlt, FaUserTimes } from 'react-icons/fa';
-import { ContactItem, ContactNumber, DeleteBtn } from './ContactList.styled';
+import {
+  ContactItem,
+  ContactNumber,
+  ContainerList,
+  DeleteBtn,
+} from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectContacts, selectFilter } from 'redux/contacts/selectors';
@@ -15,7 +20,7 @@ export const ContactList = () => {
   });
 
   return (
-    <ul>
+    <ContainerList>
       {visibleContacts.map(({ id, name, number }) => (
         <ContactItem key={id}>
           <h3>{name}</h3>
@@ -29,6 +34,6 @@ export const ContactList = () => {
           </ContactNumber>
         </ContactItem>
       ))}
-    </ul>
+    </ContainerList>
   );
 };

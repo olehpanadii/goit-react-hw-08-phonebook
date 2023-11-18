@@ -1,9 +1,14 @@
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import { FaRegIdCard } from 'react-icons/fa';
 import * as Yup from 'yup';
-import { Button, StyledForm } from './ContactForm.styled';
+import {
+  TransparentButton,
+  InputLabel,
+  StyledForm,
+  StyledInput,
+} from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
@@ -50,17 +55,19 @@ export const ContactForm = () => {
         onSubmit={handleSubmit}
       >
         <StyledForm>
-          <label>Name </label>
-          <Field name="name" type="text" placeholder="Name Surname" />
-          <ErrorMessage component="div" name="name" />
-
-          <label>Number</label>
-          <Field name="number" type="tel" placeholder="000-00-00" />
-          <ErrorMessage component="div" name="phone" />
-
-          <Button type="submit">
+          <InputLabel>
+            Name
+            <StyledInput name="name" type="text" placeholder="Name Surname" />
+            <ErrorMessage component="div" name="name" />
+          </InputLabel>
+          <InputLabel>
+            Number
+            <StyledInput name="number" type="tel" placeholder="000-00-00" />
+            <ErrorMessage component="div" name="phone" />
+          </InputLabel>
+          <TransparentButton type="submit">
             <span>Add contact</span> <FaRegIdCard />
-          </Button>
+          </TransparentButton>
         </StyledForm>
       </Formik>
     </div>

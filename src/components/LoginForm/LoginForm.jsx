@@ -1,3 +1,9 @@
+import {
+  InputLabel,
+  RegisterContainer,
+  StyledInput,
+  UkrainianButton,
+} from 'components/RegisterForm/RegisterForm.styled';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 
@@ -17,16 +23,16 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
+    <RegisterContainer onSubmit={handleSubmit} autoComplete="off">
+      <InputLabel>
         Email
-        <input type="email" name="email" />
-      </label>
-      <label>
+        <StyledInput type="email" name="email" />
+      </InputLabel>
+      <InputLabel>
         Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+        <StyledInput type="password" name="password" />
+      </InputLabel>
+      <UkrainianButton type="submit">Log In</UkrainianButton>
+    </RegisterContainer>
   );
 };

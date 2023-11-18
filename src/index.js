@@ -10,6 +10,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 const theme = {
   spacing: value => `${value * 2}px`,
+  colors: {
+    black: '#000000',
+    hover: '#0d4268',
+    transparent: 'rgba(13, 66, 104, 0.5)',
+  },
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(
